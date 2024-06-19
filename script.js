@@ -15,7 +15,7 @@ const submit = document.getElementById('submit');
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('http://localhost:5000/', {
+        const response = await fetch('https://floriambra-reporte-ra8r3fbgh-hectors-projects-f934d335.vercel.app/', {
             method: 'GET'
         });
 
@@ -96,7 +96,7 @@ function formatFecha (fecha) {
 }
 
 async function request(dataReport){
-        const response = await fetch('http://localhost:5000/', {
+        const response = await fetch('https://floriambra-reporte-ra8r3fbgh-hectors-projects-f934d335.vercel.app/', {
         method : 'post',
         header: {
             'Content-Type':'Application/json'

@@ -8,7 +8,7 @@ const list = document.getElementById('list');
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('http://localhost:5000/order', {
+        const response = await fetch('https://floriambra-reporte-ra8r3fbgh-hectors-projects-f934d335.vercel.app/order', {
             method: 'GET'
         });
 
@@ -89,7 +89,7 @@ document.addEventListener('submit', async (e) => {
     const orderReports = await select.value;
 
     try {
-        const response = await fetch(`http://localhost:5000/order/${orderReports}`,
+        const response = await fetch(`https://floriambra-reporte-ra8r3fbgh-hectors-projects-f934d335.vercel.app/order/${orderReports}`,
         { method:'GET'});
 
         const data = JSON.parse(await response.json());

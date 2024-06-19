@@ -118,7 +118,7 @@ export function updateReport(button,data){
             }
             dataUpdate.fechaAviso = dataUpdate.fechaAviso.split('T')[0];
             dataUpdate.fechaEjecucion = dataUpdate.fechaEjecucion.split('T')[0];
-            const response = fetch(`http://localhost:5000/update/${numeroOrden}`,{
+            const response = fetch(`https://floriambra-reporte-ra8r3fbgh-hectors-projects-f934d335.vercel.app/update/${numeroOrden}`,{
                 method: 'PATCH',
                 headers: {
                     'Content-type':'json/application'
