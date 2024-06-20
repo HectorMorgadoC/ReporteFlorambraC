@@ -16,7 +16,8 @@ const submit = document.getElementById('submit');
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch('https://floriambra-reporte-ra8r3fbgh-hectors-projects-f934d335.vercel.app/', {
-            method: 'GET'
+            method: 'GET',
+            mode: 'no-cors'
         });
 
         if (response.ok) {
