@@ -109,5 +109,5 @@ async function request(dataReport){
         data = JSON.parse(data);
 
         console.log(data)
-        const redirect = (data[0].affectedRows === 1) ? window.location.href = '../index.html' : console.log('Problemas al registrar el reporte');
+        const redirect = (data[0].affectedRows === 1) ? window.location.href = '/' : console.log('Problemas al registrar el reporte');
     } 
