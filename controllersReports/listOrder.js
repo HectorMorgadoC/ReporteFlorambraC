@@ -89,7 +89,7 @@ document.addEventListener('submit', async (e) => {
     const orderReports = await select.value;
 
     try {
-        const response = await fetch(`https://floriambra-reporte-ra8r3fbgh-hectors-projects-f934d335.vercel.app/order/${orderReports}`,
+        const response = await fetch(`https://app-a2f02e86-b18c-49d6-a13b-2eacce375b81.cleverapps.io/${orderReports}`,
         { method:'GET'});
 
         const data = JSON.parse(await response.json());

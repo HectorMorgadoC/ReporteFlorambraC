@@ -1,6 +1,6 @@
 export async function reportDelete(button,number){
     button.addEventListener('click',async () => {
-        const response = await fetch(`https://floriambra-reporte-ra8r3fbgh-hectors-projects-f934d335.vercel.app/delete/${number}`,{
+        const response = await fetch(`https://app-a2f02e86-b18c-49d6-a13b-2eacce375b81.cleverapps.io/delete/${number}`,{
             method: 'POST',
             headers:{
                 'Content-type':'json/application'
