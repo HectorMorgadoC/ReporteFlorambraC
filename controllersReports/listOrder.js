@@ -89,7 +89,7 @@ document.addEventListener('submit', async (e) => {
     const orderReports = await select.value;
 
     try {
-        const response = await fetch(`https://determined-mattie-floriambra-80a8f0bc.koyeb.app/${orderReports}`,
+        const response = await fetch(`https://determined-mattie-floriambra-80a8f0bc.koyeb.app/order/${orderReports}`,
         { method:'GET'});
 
         const data = JSON.parse(await response.json());
