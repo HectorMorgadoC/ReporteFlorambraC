@@ -15,7 +15,7 @@ const submit = document.getElementById('submit');
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('https://determined-mattie-floriambra-80a8f0bc.koyeb.app/', {
+        const response = await fetch('https://floriambrareporteapi.onrender.com/', {
             method: 'GET'
         });
 
@@ -96,7 +96,7 @@ function formatFecha (fecha) {
 }
 
 async function request(dataReport){
-        const response = await fetch('https://determined-mattie-floriambra-80a8f0bc.koyeb.app/', {
+        const response = await fetch('https://floriambrareporteapi.onrender.com/', {
         method : 'post',
         header: {
             'Content-Type':'Application/json'

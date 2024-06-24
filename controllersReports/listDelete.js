@@ -1,6 +1,6 @@
 export async function reportDelete(button,number){
     button.addEventListener('click',async () => {
-        const response = await fetch(`https://determined-mattie-floriambra-80a8f0bc.koyeb.app/delete/${number}`,{
+        const response = await fetch(`https://floriambrareporteapi.onrender.com/delete/${number}`,{
             method: 'POST',
             headers:{
                 'Content-type':'json/application'

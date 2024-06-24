@@ -118,7 +118,7 @@ export function updateReport(button,data){
             }
             dataUpdate.fechaAviso = dataUpdate.fechaAviso.split('T')[0];
             dataUpdate.fechaEjecucion = dataUpdate.fechaEjecucion.split('T')[0];
-            const response = fetch(`https://determined-mattie-floriambra-80a8f0bc.koyeb.app/update/${numeroOrden}`,{
+            const response = fetch(`https://floriambrareporteapi.onrender.com/update/${numeroOrden}`,{
                 method: 'PATCH',
                 headers: {
                     'Content-type':'json/application'

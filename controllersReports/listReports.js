@@ -8,7 +8,7 @@ const button = document.getElementById('buttonInp');
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('https://determined-mattie-floriambra-80a8f0bc.koyeb.app/reports', {
+        const response = await fetch('https://floriambrareporteapi.onrender.com/reports', {
             method: 'GET'
         });
 
@@ -97,7 +97,7 @@ button.addEventListener('click', async (e) => {
     const nameReports = await select.value;
 
     try {
-        const response = await fetch(`https://determined-mattie-floriambra-80a8f0bc.koyeb.app/reports/${nameReports}`,
+        const response = await fetch(`https://floriambrareporteapi.onrender.com/reports/${nameReports}`,
         { method:'GET'});
 
         const data = JSON.parse(await response.json());
