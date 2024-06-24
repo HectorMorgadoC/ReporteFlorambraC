@@ -8,7 +8,7 @@ const list = document.getElementById('list');
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('https://app-a2f02e86-b18c-49d6-a13b-2eacce375b81.cleverapps.io/order', {
+        const response = await fetch('https://determined-mattie-floriambra-80a8f0bc.koyeb.app/order', {
             method: 'GET'
         });
 
@@ -89,7 +89,7 @@ document.addEventListener('submit', async (e) => {
     const orderReports = await select.value;
 
     try {
-        const response = await fetch(`https://app-a2f02e86-b18c-49d6-a13b-2eacce375b81.cleverapps.io/order/${orderReports}`,
+        const response = await fetch(`https://determined-mattie-floriambra-80a8f0bc.koyeb.app/${orderReports}`,
         { method:'GET'});
 
         const data = JSON.parse(await response.json());

@@ -15,7 +15,7 @@ const submit = document.getElementById('submit');
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('https://app-a2f02e86-b18c-49d6-a13b-2eacce375b81.cleverapps.io/', {
+        const response = await fetch('https://determined-mattie-floriambra-80a8f0bc.koyeb.app/', {
             method: 'GET'
         });
 
@@ -96,7 +96,7 @@ function formatFecha (fecha) {
 }
 
 async function request(dataReport){
-        const response = await fetch('https://app-a2f02e86-b18c-49d6-a13b-2eacce375b81.cleverapps.io/', {
+        const response = await fetch('https://determined-mattie-floriambra-80a8f0bc.koyeb.app/', {
         method : 'post',
         header: {
             'Content-Type':'Application/json'
