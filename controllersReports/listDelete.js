@@ -1,4 +1,4 @@
-import { urlLocal, urlDeplo } from "./constant.js";
+import { urlLocal, urlDeplo } from "./constant.js"
 
 export async function reportDelete(button,number){
     button.addEventListener('click',async () => {
@@ -8,9 +8,8 @@ export async function reportDelete(button,number){
                 'Content-type':'json/application'
             }
         })
-        const data = JSON.parse(await response.json());
+        const data = JSON.parse(await response.json())
 
-        const redirect = (data[0].affectedRows === 1) ? window.location.href = '../index.html' : console.log('Problemas en eliminar el reporte');
-
+        const redirect = (data[0].affectedRows === 1) ? window.location.href = '../index.html' : console.log('Problemas en eliminar el reporte')
     })
 }
