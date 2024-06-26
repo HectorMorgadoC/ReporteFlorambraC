@@ -1,6 +1,8 @@
+import { urlLocal, urlDeplo } from "./constant.js";
+
 export async function reportDelete(button,number){
     button.addEventListener('click',async () => {
-        const response = await fetch(`https://floriambrareporteapi.onrender.com/delete/${number}`,{
+        const response = await fetch(`${urlLocal}delete/${number}`,{
             method: 'POST',
             headers:{
                 'Content-type':'json/application'

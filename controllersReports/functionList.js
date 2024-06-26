@@ -1,14 +1,16 @@
 import { buttonGet } from "./listData.js"
 import { updateReport } from "./listUpdate.js"
 import { reportDelete } from "./listDelete.js"
+import { urlLocal, urlDeplo } from "./constant.js"
 
 export const functionList = (nameEndpoint, optionReport) => {
     const select = document.getElementById(nameEndpoint)
     const list = document.getElementById("list")
+
     document.addEventListener("DOMContentLoaded", async () => {
         try {
             const response = await fetch(
-            `https://floriambrareporteapi.onrender.com/${nameEndpoint}`,
+            `${urlLocal}${nameEndpoint}`,
             {
                 method: "GET",
             }
@@ -16,6 +18,7 @@ export const functionList = (nameEndpoint, optionReport) => {
             if (response.ok) {
                 const data = await response.json() // Parsea la respuesta como JSON
                 const totalData = JSON.parse(data)
+                const option = optionReport
                 if (totalData.error) {
                     const body = document.querySelector("body")
                     const main = document.querySelector("main")
@@ -28,9 +31,17 @@ export const functionList = (nameEndpoint, optionReport) => {
                 }
                 for (let list of totalData) {
                     const optionReports = document.createElement("option")
-                    optionReports.innerHTML = list.optionReport
+                    if (optionReport === 'descripcion') {
+                        optionReports.innerHTML = list.descripcion
+                    }
+                    if (optionReport === 'numero_orden') {
+                        optionReports.innerHTML = list.numero_orden
+                    }
+                    if ( optionReport === 'nombre') {
+                        optionReports.innerHTML = list.nombre
+                    }              
                     select.appendChild(optionReports)
-                }
+                }       
             } else {
                 console.error("Error en la solicitud:", response.status)
             }
@@ -82,10 +93,10 @@ export const functionList = (nameEndpoint, optionReport) => {
         titleTable.appendChild(titleReportFault)
         table.appendChild(titleTable)
 
-        const orderReports = await select.value;
+        const valueUrl = await select.value;
 
         try {
-            const response = await fetch(`https://floriambrareporteapi.onrender.com/order/${orderReports}`,
+            const response = await fetch(`${urlLocal}${nameEndpoint}/${valueUrl}`,
             { method:'GET'});
 
             const data = JSON.parse(await response.json());

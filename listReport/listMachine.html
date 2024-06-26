@@ -30,7 +30,10 @@
             <div id="list"></div>
         </section>
     </main>
-    <script type="module" src="../controllersReports/listMachine.js"></script>
+    <script type="module">
+        import { functionList } from '../controllersReports/functionList.js'
+        functionList('machine', 'descripcion')
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </body>

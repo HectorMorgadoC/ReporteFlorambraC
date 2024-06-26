@@ -1,21 +1,20 @@
+import { urlLocal, urlDeplo } from "./controllersReports/constant.js"
 
-const formData = document.getElementById('formdata');
-const selectDateWarning = document.getElementById('datetimeWarning');
-const selectDateExecute = document.getElementById('datetimeExecute');
-const selectReports = document.getElementById('reports');
-const selectDescription = document.getElementById('description');
-const selectWorkRoutine = document.getElementById('workroutine');
-const selectAssigned = document.getElementById('assigned');
-const selectTitleText = document.getElementById('titleText');
-const selectReport = document.getElementById('report');
-const selectComment = document.getElementById('comment');
-const submit = document.getElementById('submit');
-
-
+const formData = document.getElementById('formdata')
+const selectDateWarning = document.getElementById('datetimeWarning')
+const selectDateExecute = document.getElementById('datetimeExecute')
+const selectReports = document.getElementById('reports')
+const selectDescription = document.getElementById('description')
+const selectWorkRoutine = document.getElementById('workroutine')
+const selectAssigned = document.getElementById('assigned')
+const selectTitleText = document.getElementById('titleText')
+const selectReport = document.getElementById('report')
+const selectComment = document.getElementById('comment')
+const submit = document.getElementById('submit')
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('https://floriambrareporteapi.onrender.com/', {
+        const response = await fetch(urlLocal, {
             method: 'GET'
         });
 
@@ -96,7 +95,7 @@ function formatFecha (fecha) {
 }
 
 async function request(dataReport){
-        const response = await fetch('https://floriambrareporteapi.onrender.com/', {
+        const response = await fetch(urlLocal, {
         method : 'post',
         header: {
             'Content-Type':'Application/json'

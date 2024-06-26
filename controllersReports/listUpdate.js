@@ -1,3 +1,5 @@
+import { urlLocal, urlDeplo } from "./constant.js";
+
 export function updateReport(button,data){
     button.addEventListener('click',() => {
         let { 
@@ -118,7 +120,7 @@ export function updateReport(button,data){
             }
             dataUpdate.fechaAviso = dataUpdate.fechaAviso.split('T')[0];
             dataUpdate.fechaEjecucion = dataUpdate.fechaEjecucion.split('T')[0];
-            const response = fetch(`https://floriambrareporteapi.onrender.com/update/${numeroOrden}`,{
+            const response = fetch(`${urlLocal}update/${numeroOrden}`,{
                 method: 'PATCH',
                 headers: {
                     'Content-type':'json/application'
