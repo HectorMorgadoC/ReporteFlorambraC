@@ -20,7 +20,10 @@ h1 {
     font-size: 28px;
     color: #ffffff;
 }
-
+h4 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
 /* Estilos para los enlaces botón */
 a.button {
     display: inline-block;

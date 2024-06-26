@@ -18,7 +18,6 @@ export const functionList = (nameEndpoint, optionReport) => {
             if (response.ok) {
                 const data = await response.json() // Parsea la respuesta como JSON
                 const totalData = JSON.parse(data)
-                const option = optionReport
                 if (totalData.error) {
                     const body = document.querySelector("body")
                     const main = document.querySelector("main")
@@ -126,8 +125,8 @@ export const functionList = (nameEndpoint, optionReport) => {
                 descripcion_maquina.innerText = result.descripcion
                 reportero.innerText = result.reportero
                 asignado.innerText =   result.asignado
-                fechaAviso.innerText = result.fechaAviso
-                fechaEjecucion.innerText = result.fechaEjecucion
+                fechaAviso.innerText = result.fechaAviso.split('T',1)
+                fechaEjecucion.innerText = result.fechaEjecucion.split('T',1)
                 reporteFalla.innerText = result.reporteFalla
 
                 listResult.appendChild(numeroOrden)
