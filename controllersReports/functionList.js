@@ -1,7 +1,7 @@
 import { buttonGet } from "./listData.js"
 import { updateReport } from "./listUpdate.js"
 import { reportDelete } from "./listDelete.js"
-import { urlLocal, urlDeplo } from "./constant.js"
+import { url } from "./constant.js"
 
 export const functionList = (nameEndpoint, optionReport) => {
     const select = document.getElementById(nameEndpoint)
@@ -10,7 +10,7 @@ export const functionList = (nameEndpoint, optionReport) => {
     document.addEventListener("DOMContentLoaded", async () => {
         try {
             const response = await fetch(
-            `${urlLocal}${nameEndpoint}`,
+            `${url}${nameEndpoint}`,
             {
                 method: "GET",
             }
@@ -95,7 +95,7 @@ export const functionList = (nameEndpoint, optionReport) => {
         const valueUrl = await select.value;
 
         try {
-            const response = await fetch(`${urlLocal}${nameEndpoint}/${valueUrl}`,
+            const response = await fetch(`${url}${nameEndpoint}/${valueUrl}`,
             { method:'GET'});
 
             const data = JSON.parse(await response.json());

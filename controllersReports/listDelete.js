@@ -1,8 +1,8 @@
-import { urlLocal, urlDeplo } from "./constant.js"
+import { url } from "./constant.js"
 
 export async function reportDelete(button,number){
     button.addEventListener('click',async () => {
-        const response = await fetch(`${urlLocal}delete/${number}`,{
+        const response = await fetch(`${url}delete/${number}`,{
             method: 'POST',
             headers:{
                 'Content-type':'json/application'

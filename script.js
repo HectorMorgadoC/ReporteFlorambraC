@@ -1,4 +1,4 @@
-import { urlLocal, urlDeplo } from "./controllersReports/constant.js"
+import { url } from "./controllersReports/constant.js"
 
 const formData = document.getElementById('formdata')
 const selectDateWarning = document.getElementById('datetimeWarning')
@@ -14,7 +14,7 @@ const submit = document.getElementById('submit')
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch(urlLocal, {
+        const response = await fetch(url, {
             method: 'GET'
         });
 
@@ -92,7 +92,7 @@ function formatFecha (fecha) {
 }
 
 async function request(dataReport){
-        const response = await fetch(urlLocal, {
+        const response = await fetch(url, {
         method : 'post',
         header: {
             'Content-Type':'Application/json'
