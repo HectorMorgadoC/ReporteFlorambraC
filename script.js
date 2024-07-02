@@ -83,7 +83,7 @@ formData.addEventListener('submit',async(e) => {
 });
 
 function formatFecha (fecha) {
-    let partesFecha = fecha.split("-")
+    let partesFecha = fecha.split("/")
     let dia = partesFecha[0]
     let mes = partesFecha[1]
     let anio = partesFecha[2]
@@ -104,6 +104,5 @@ async function request(dataReport){
 
         data = JSON.parse(data)
 
-        console.log(data)
         const redirect = (data[0].affectedRows === 1) ? window.location.href = 'https://hectormorgadoc.github.io/ReporteFlorambraC/' : console.log('Problemas al registrar el reporte')
     } 
