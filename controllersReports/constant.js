@@ -1,3 +1,3 @@
 const urlLocal = 'http://localhost:8080/'
 const urlDeplo = 'https://floriambrareporteapi.onrender.com/'
-export const url = urlDeplo
+export const url = urlLocal

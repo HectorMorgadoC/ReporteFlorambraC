@@ -8,7 +8,7 @@ export async function reportDelete(button,number){
                 'Content-type':'json/application'
             }
         })
-        const data = JSON.parse(await response.json())
+        const data = await response.json()
 
         const redirect = (data[0].affectedRows === 1) ? window.location.href = '../index.html' : console.log('Problemas en eliminar el reporte')
     })

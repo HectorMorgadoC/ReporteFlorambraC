@@ -2,12 +2,17 @@ import { buttonGet } from "./listData.js"
 import { updateReport } from "./listUpdate.js"
 import { reportDelete } from "./listDelete.js"
 import { url } from "./constant.js"
+import { messageError,selectDataIterar } from "./functionData.js"
+import { requestFeth } from "./functionData.js"
+// let data = localStorage.getItem('data')
 
 export const functionList = (nameEndpoint, optionReport) => {
     const select = document.getElementById(nameEndpoint)
     const list = document.getElementById("list")
 
+    
     document.addEventListener("DOMContentLoaded", async () => {
+        // requestFeth(data,`${url}${nameEndpoint}`,selectDataIterar)
         try {
             const response = await fetch(
             `${url}${nameEndpoint}`,
@@ -16,19 +21,11 @@ export const functionList = (nameEndpoint, optionReport) => {
             }
             );
             if (response.ok) {
-                const data = await response.json() // Parsea la respuesta como JSON
-                const totalData = JSON.parse(data)
-                if (totalData.error) {
-                    const body = document.querySelector("body")
-                    const main = document.querySelector("main")
-                    const messageError = document.createElement("h3")
-                    if (main) {
-                        main.remove();
-                        messageError.innerHTML = "Error de conexion"
-                        body.appendChild(messageError)
-                    }
+                const data = await response.json()
+                if (data.error) {
+                    messageError('Error de conexion')
                 }
-                for (let list of totalData) {
+                for (let list of data) {
                     const optionReports = document.createElement("option")
                     if (optionReport === 'descripcion') {
                         optionReports.innerHTML = list.descripcion
@@ -47,6 +44,7 @@ export const functionList = (nameEndpoint, optionReport) => {
         } catch (error) {
             console.error("Error al realizar la solicitud:", error)
         }
+            
     })
 
     document.addEventListener('submit', async (e) => {
@@ -82,6 +80,8 @@ export const functionList = (nameEndpoint, optionReport) => {
         titleDateExecute.innerText = 'Fecha de ejecucion'
         const titleReportFault = document.createElement('td')
         titleReportFault.innerText = 'Reporte de falla'
+        const buttonTitle = document.createElement('td')
+        buttonTitle.innerHTML = 'Opciones'
 
         titleTable.appendChild(titleCode)
         titleTable.appendChild(titleDescription)
@@ -90,6 +90,7 @@ export const functionList = (nameEndpoint, optionReport) => {
         titleTable.appendChild(titleDateWarning)
         titleTable.appendChild(titleDateExecute)
         titleTable.appendChild(titleReportFault)
+        titleTable.appendChild(buttonTitle)
         table.appendChild(titleTable)
 
         const valueUrl = await select.value;
@@ -98,7 +99,7 @@ export const functionList = (nameEndpoint, optionReport) => {
             const response = await fetch(`${url}${nameEndpoint}/${valueUrl}`,
             { method:'GET'});
 
-            const data = JSON.parse(await response.json());
+            const data = await response.json();
             
             for(let result of data){
                 const listResult = document.createElement('tr')
@@ -113,6 +114,7 @@ export const functionList = (nameEndpoint, optionReport) => {
                 const buttonReport = document.createElement('button')
                 const buttonUpdate = document.createElement('button')
                 const buttonDelete = document.createElement('button')
+                
                 buttonTable.classList.add('table-button')
                 buttonReport.innerText = 'Imprimir'
                 buttonUpdate.innerText = 'Modificar'

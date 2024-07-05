@@ -1,16 +1,10 @@
 import { url } from "./constant.js"
+import { requestFeth,selectDataPush,dateFormat } from "./functionData.js"
 let [ selectReportero,selectAsignado,selectDescripcion,selectTrabajoEfectuar ]  = [ [],[],[],[] ]
+let data = localStorage.getItem('data')
 
     document.addEventListener('DOMContentLoaded', async () => {
-        const response = await fetch(url,{
-            method : 'GET'
-        })
-        const data = await response.json()
-        const arrayReports = JSON.parse( data )
-        selectReportero.push(arrayReports[0])
-        selectAsignado.push(arrayReports[3])
-        selectTrabajoEfectuar.push(arrayReports[2])
-        selectDescripcion.push(arrayReports[1])
+        requestFeth(data,url,selectDataPush)
     })
 
 
@@ -136,9 +130,8 @@ export function updateReport(button,data){
         const titleComentarios = document.createElement('h4')
         const labelComentarios = document.createElement('label')
         const inputComentarios = document.createElement('input')
-        inputComentarios.setAttribute('required','required')
         inputComentarios.setAttribute('type','text')
-        titleAsignado.innerHTML = 'Comentarios: '
+        titleComentarios.innerHTML = 'Comentarios: '
         labelComentarios.innerHTML = comentarios
         inputComentarios.value = comentarios
 
@@ -218,29 +211,3 @@ export function updateReport(button,data){
     })
 }
 
-function dateFormat(fecha) {
-    let formatoFecha = /\d\d\d\d-\d\d-\d\d/
-    let fechaFormato = fecha.split('-')
-    for (let i = 0; i < fechaFormato.length;i++) {
-        fechaFormato[i] = Number(fechaFormato[i])
-    }
-    if (fechaFormato[0] <= 1900 || fechaFormato[0] > 2200) {
-        alert('formato año incorrecto')
-        return
-    } 
-
-    if (fechaFormato[1] <= 0 || fechaFormato[1] > 12) {
-        alert('formato mes incorrecto')
-        return
-    }
-    if (fechaFormato[2] <= 0 || fechaFormato[2] >  31) {
-        alert ('formato dia incorrecto')
-        return
-    }
-    if (formatoFecha.test(fecha)) {
-        return fecha
-    } else {
-        alert('No es el fomato ')
-        return 
-    }
-}
