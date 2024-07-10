@@ -56,7 +56,7 @@ export function  selectData (data) {
             listDataSelect(assigned,'nombre','assigned')
 }
 
-export async function requestFeth(data,url,metodo) {
+export async function requestFeth(data,url) {
     if(data === null) {
         try {
             const dataReport = await fetch(url, {
@@ -66,7 +66,8 @@ export async function requestFeth(data,url,metodo) {
             data = await dataReport.json()
             localStorage.setItem('data',JSON.stringify(data))
             if (dataReport.ok) {
-                metodo(data)
+                //metodo(data)
+                return data
             } else {
                 messageError('Error de conexion')
                 throw new Error(`Error de conexion,${error}`)
@@ -78,7 +79,8 @@ export async function requestFeth(data,url,metodo) {
         
     } else {
         data = JSON.parse(data)
-        metodo(data)
+        return data
+        // metodo(data)
     }
 }
 export function dateFormat(fecha) {
@@ -108,13 +110,6 @@ export function dateFormat(fecha) {
     }
 }
 
-export function selectDataPush(data) {
-    const arrayReports = data
-    selectReportero.push(arrayReports[0])
-    selectAsignado.push(arrayReports[3])
-    selectTrabajoEfectuar.push(arrayReports[2])
-    selectDescripcion.push(arrayReports[1])
-}
 
 export function selectDataIterar(data,optionReport) {
     for (let list of data) {
@@ -130,4 +125,61 @@ export function selectDataIterar(data,optionReport) {
                     }              
                     select.appendChild(optionReports)
                 }       
+}
+
+export function elementSelectInput(titleText,attributeName,valueElement,form) {
+    const title = document.createElement('h4')
+    const label = document.createElement('label')
+    const input = document.createElement('input')
+    input.setAttribute('type','text')
+    input.setAttribute('required','required')
+    input.setAttribute('name',attributeName)
+    title.innerHTML = titleText
+    label.innerHTML = valueElement
+    input.value = valueElement
+
+    form.appendChild(title)
+    form.appendChild(label)
+    form.appendChild(input)
+
+    return input.value
+}
+
+export function elementSelectOption(titleText,attributeName,valueElement,form,data,metodo) {
+    const title = document.createElement('h4')
+    const label = document.createElement('label')
+    const input = document.createElement('select')
+    input.setAttribute('required','required')
+    input.setAttribute('name',attributeName)
+    for (let report of data) {
+        const option = document.createElement('option')
+        option.innerHTML = report[metodo]
+        input.appendChild(option)
+    }
+    title.innerHTML = titleText
+    label.innerHTML = valueElement
+    form.appendChild(title)
+    form.appendChild(label)
+    form.appendChild(input)
+
+    return input.value
+}
+
+export function elementSelectDateTime(titleText,attributeName,valueElement,form) {
+    const title = document.createElement('h4')
+    const label = document.createElement('label')
+    label.setAttribute('for','datetimeWarning')
+    const input = document.createElement('input')
+    input.setAttribute('type','datetime')
+    input.setAttribute('id','datetimeWarning')
+    input.setAttribute('required','required')
+    input.setAttribute('name',attributeName)
+    title.innerHTML = titleText
+    label.innerHTML = valueElement.split('T',1)
+    input.value = valueElement.split('T',1)
+    form.appendChild(title)
+    form.appendChild(label)
+    form.appendChild(input)
+
+    return input.value
 }
