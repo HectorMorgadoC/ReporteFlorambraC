@@ -56,7 +56,7 @@ export function  selectData (data) {
             listDataSelect(assigned,'nombre','assigned')
 }
 
-export async function requestFeth(data,url) {
+export async function requestFeth(data,url,metodo) {
     if(data === null) {
         try {
             const dataReport = await fetch(url, {
@@ -66,8 +66,8 @@ export async function requestFeth(data,url) {
             data = await dataReport.json()
             localStorage.setItem('data',JSON.stringify(data))
             if (dataReport.ok) {
-                //metodo(data)
-                return data
+                metodo(data)
+                //return data
             } else {
                 messageError('Error de conexion')
                 throw new Error(`Error de conexion,${error}`)
@@ -79,8 +79,9 @@ export async function requestFeth(data,url) {
         
     } else {
         data = JSON.parse(data)
-        return data
-        // metodo(data)
+        metodo(data)
+        //return data
+        
     }
 }
 export function dateFormat(fecha) {
@@ -182,4 +183,30 @@ export function elementSelectDateTime(titleText,attributeName,valueElement,form)
     form.appendChild(input)
 
     return input.value
+}
+
+export function elementDelete () {
+    const section = document.querySelectorAll('section')
+    const main = document.querySelector('main')
+    const container = document.createElement('div')
+    container.classList = ' MessageDelete'
+    const title = document.createElement('h2')
+    title.innerHTML = 'Desea eliminar este reporte'
+    const buttonYes = document.createElement('button')
+    buttonYes.innerHTML = 'SI'
+    buttonYes.setAttribute('id','yes')
+    const buttonNo = document.createElement('button')
+    buttonNo.innerHTML = 'NO'
+    buttonNo.setAttribute('id','no')
+
+    if(section) {
+        for(let element of section) {
+            element.remove()
+        }
+        container.appendChild(title)
+        container.appendChild(buttonYes)
+        container.appendChild(buttonNo)
+        main.appendChild(container)
+    }
+    
 }

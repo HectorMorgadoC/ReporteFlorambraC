@@ -1,10 +1,10 @@
 import { url } from "./constant.js"
-import { requestFeth,dateFormat,elementSelectInput, elementSelectOption, elementSelectDateTime } from "./functionData.js"
+import { requestFeth,dateFormat,elementSelectInput, elementSelectOption, elementSelectDateTime, selectData } from "./functionData.js"
 let data = localStorage.getItem('data')
 let [ selectReportero, selectDescripcion,  selectTrabajoEfectuar ,selectAsignado ]  = [ [],[],[],[] ]
 
     document.addEventListener('DOMContentLoaded', async () => {
-        const response = await requestFeth(data,url);
+        const response = await requestFeth(data,url,selectData);
         [ selectReportero, selectDescripcion,  selectTrabajoEfectuar ,selectAsignado ] = response 
     })
 

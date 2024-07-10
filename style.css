@@ -323,3 +323,14 @@ tr:nth-child(even) {
     padding: 0;
 
 }
+
+.MessageDelete{
+    display: flex;
+    flex-direction: column;
+    margin:2em;
+}
+
+.MessageDelete button{
+    display: flex;
+    margin: 1em;
+}

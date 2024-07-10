@@ -3,16 +3,12 @@ import { updateReport } from "./listUpdate.js"
 import { reportDelete } from "./listDelete.js"
 import { url } from "./constant.js"
 import { messageError,selectDataIterar } from "./functionData.js"
-import { requestFeth } from "./functionData.js"
-// let data = localStorage.getItem('data')
 
 export const functionList = (nameEndpoint, optionReport) => {
     const select = document.getElementById(nameEndpoint)
     const list = document.getElementById("list")
 
-    
     document.addEventListener("DOMContentLoaded", async () => {
-        // requestFeth(data,`${url}${nameEndpoint}`,selectDataIterar)
         try {
             const response = await fetch(
             `${url}${nameEndpoint}`,

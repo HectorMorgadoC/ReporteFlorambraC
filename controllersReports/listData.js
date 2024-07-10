@@ -26,7 +26,6 @@ export function buttonGet(buttonValue,result){
         button.innerText = 'Imprimir'
 
         reportContainer.classList = 'reportPrint'
-
         containerReportDate.classList = 'containerReportDate'
         containerReportPersons.classList = 'containerReportPersons'
         containerReportMachine.classList = 'containerReportMachine'
@@ -34,36 +33,26 @@ export function buttonGet(buttonValue,result){
 
         titleReport.id = 'titleReport'
         titleReport.innerHTML = 'REPORTE DE MANTENIMIENTO'
-
         numeroOrden.innerText = `Numero de orden: ${data.numeroOrden}`
         numeroOrden.id = 'numeroOrdenReporte'
-
         reportero.innerText = `Reportero: ${data.reportero}`
         reportero.id = 'reporteroReporte'
-
         asignado.innerText = `Asignado: ${data.asignado}`
         asignado.id = 'asignadoReporte'
-
         descripcion.innerText  = `Descripcion_maquina: ${data.descripcion}`
         descripcion.id = 'descripcionReporte'
-
         rutinaTrabajo.innerText = `Rutina_trabajo: ${data.rutinaTrabajo}`
         rutinaTrabajo.id = 'rutinaTrabajoReporte'
-
         fechaAviso.innerText = `Fecha_aviso: ${data.fechaAviso.split('T')[0]}`
         fechaAviso.id = 'fechaAvisoReporte'
-
         fechaEjecucion.innerText = `Fecha_ejecucion: ${data.fechaEjecucion.split('T')[0]}`
         fechaEjecucion.id = 'fechaEjecucionReporte'
-
         reporteFalla.innerText = `Reporte_falla: ${data.reporteFalla}`
         reporteFalla.id = 'reporteFallaReporte'
         reporteFalla.classList = 'printReport'
-
         trabajoEfectuar.innerText = `Trabajo_efectuar: ${data.trabajoEfectuar}`
         trabajoEfectuar.id = 'trabajoEfectuarReporte'
         trabajoEfectuar.classList = 'printReport'
-
         comentarios.innerHTML = `Comentarios: ${data.comentarios}`
         comentarios.id = 'comentariosReporte'
         comentarios.classList = 'printReport'
