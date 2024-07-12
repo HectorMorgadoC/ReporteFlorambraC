@@ -1,18 +1,11 @@
 import { url } from "./constant.js"
-import { requestFeth,dateFormat,elementSelectInput, elementSelectOption, elementSelectDateTime, selectData } from "./functionData.js"
-let data = localStorage.getItem('data')
-let [ selectReportero, selectDescripcion,  selectTrabajoEfectuar ,selectAsignado ]  = [ [],[],[],[] ]
+import { testFormatDate } from "./formatDate/formatDate.js"
+import { elementSelectInput, elementSelectOption, elementSelectDateTime } from "./component/elementSelection.js"
+let data = JSON.parse(localStorage.getItem('data'))
+let [ selectReportero, selectDescripcion,  selectTrabajoEfectuar ,selectAsignado ]  = data
 
-    document.addEventListener('DOMContentLoaded', async () => {
-        const response = await requestFeth(data,url,selectData);
-        [ selectReportero, selectDescripcion,  selectTrabajoEfectuar ,selectAsignado ] = response 
-    })
+export function updateReport(data){
 
-
-
-export function updateReport(button,data){
-
-    button.addEventListener('click',(e) => {
         let { 
             numeroOrden,
             reportero,
@@ -33,10 +26,10 @@ export function updateReport(button,data){
         update.innerText = 'Modificar'
 
         elementSelectInput('Numero de orden','numeroOrden',numeroOrden,form)
-        elementSelectOption('Reportero','reportero',reportero,form,selectReportero,'nombre')
-        elementSelectOption('Asignado','asignado',asignado,form,selectAsignado,'nombre')
-        elementSelectOption('Descripcion de maquina','descripcion',descripcion,form,selectDescripcion,'descripcion')
-        elementSelectOption('Rutina de trabajo','rutinaTrabajo',rutinaTrabajo,form,selectTrabajoEfectuar,'descripcion')
+        elementSelectOption('Reportero','reportero','reports',reportero,form,selectReportero,'nombre')
+        elementSelectOption('Asignado','asignado','assigned',asignado,form,selectAsignado,'nombre')
+        elementSelectOption('Descripcion de maquina','descripcion','description',descripcion,form,selectDescripcion,'descripcion')
+        elementSelectOption('Rutina de trabajo','rutinaTrabajo','workroutine',rutinaTrabajo,form,selectTrabajoEfectuar,'descripcion')
         elementSelectDateTime('Fecha de aviso','fechaAviso',fechaAviso,form)
         elementSelectDateTime('Fecha de ejecucion','fechaEjecucion',fechaEjecucion,form)
         elementSelectInput('Reporte falla','reporteFalla',reporteFalla,form)
@@ -51,12 +44,11 @@ export function updateReport(button,data){
         list.appendChild(form)
 
         form.addEventListener('submit',async(e) => {
-            // con la funcion dateFormat toma el valor de las fechas y las compara con un formato, si no lo cumple retorna todo
             e.preventDefault()
             const formData = new FormData(form)
             const dataUpdate = Object.fromEntries(formData)
-            dateFormat(dataUpdate.fechaAviso)
-            dateFormat(dataUpdate.fechaEjecucion)
+            testFormatDate(dataUpdate.fechaAviso)
+            testFormatDate(dataUpdate.fechaEjecucion)
             try {
                 
                 const response = fetch(`${url}update/${numeroOrden}`,{
@@ -72,6 +64,5 @@ export function updateReport(button,data){
             
             
         })        
-    })
 }
 

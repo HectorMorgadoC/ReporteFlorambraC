@@ -1,8 +1,8 @@
 import { url } from "./constant.js"
-import { elementDelete } from "./functionData.js";
+import { elementDelete } from "./component/elementDelete.js";
 
-export async function reportDelete(button,number){
-    button.addEventListener('click',async () => {
+
+export async function reportDelete(number){
         elementDelete();
         const buttonYes = document.querySelector('#yes')
         const buttonNo = document.querySelector('#no')
@@ -27,5 +27,4 @@ export async function reportDelete(button,number){
         buttonNo.addEventListener('click',() => {
             window.location.href = `../index.html`
         })
-    })
 }

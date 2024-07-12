@@ -1,10 +1,7 @@
-import { buttonGet } from "./listData.js"
-import { updateReport } from "./listUpdate.js"
-import { reportDelete } from "./listDelete.js"
 import { url } from "./constant.js"
-import { messageError,selectDataIterar } from "./functionData.js"
+import { messageError } from "./messageError/messageError.js"
 
-export const functionList = (nameEndpoint, optionReport) => {
+export const listReport = (nameEndpoint, optionReport) => {
     const select = document.getElementById(nameEndpoint)
     const list = document.getElementById("list")
 
@@ -138,9 +135,18 @@ export const functionList = (nameEndpoint, optionReport) => {
                 table.appendChild(listResult)
                 list.appendChild(table)
 
-                buttonGet(buttonReport,result)
-                updateReport(buttonUpdate,result)
-                reportDelete(buttonDelete,result.numeroOrden)
+                buttonReport.addEventListener('click', async () => {
+                    const module =  await import('./listData.js')
+                    module.buttonGet(result)
+                })
+                buttonUpdate.addEventListener('click', async () => {
+                    const module = await import('./listUpdate.js')
+                    module.updateReport(result)
+                })
+                buttonDelete.addEventListener('click', async () => {
+                    const module = await import('./listDelete.js')
+                    module.reportDelete(result.numeroOrden)
+                })
             }
         } catch (error) {
             console.error( 'Error al realizar peticion: '+ error)

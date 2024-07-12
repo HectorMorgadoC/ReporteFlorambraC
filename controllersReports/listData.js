@@ -1,6 +1,5 @@
-export function buttonGet(buttonValue,result){
+export function buttonGet(result){
     
-    buttonValue.addEventListener ('click', () => {
         const data = result;
         const table = document.querySelector('table')
         const list = document.querySelector('#list')
@@ -89,6 +88,5 @@ export function buttonGet(buttonValue,result){
         if(table){
             table.remove();
         }                
-    })
 }
 
