@@ -1,336 +1,140 @@
-
-/* Reset de estilos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --primary-color: #fe4750;
+    --second-color: #fe8166;
+    --third-color: #641a27;
+    --fourth-color: #a770c9;
+    --fifth-color: #20c47d;
+    --primary-color-opaco: rgba(254, 71, 80, 0.4);
+    --second-color-opaco: rgb(254, 129, 102, 0.5);
+    --fifth-color-opaco: rgb(32, 196, 125, 0.4);
+    --border-radius: 5px;
+    --transition-speed: 0.3s;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    /* background-color: #000;*/
+    margin: 0;
+    padding: 0;
 }
 
-main {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-h1 {
-    font-size: 28px;
-    color: #ffffff;
-}
-h4 {
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
-/* Estilos para los enlaces botón */
-a.button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px;
-    text-decoration: none;
-    color: white;
-    background-color: rgb(206, 70, 70);
-    /* Naranja */
-    border: 2px solid rgb(206, 70, 70);
-    /* Naranja */
-    transition: all 0.3s ease;
-}
-
-a.button:hover {
-    background-color: rgb(153, 33, 33);
-    /* Naranja oscuro */
-    border-color: rgb(153, 33, 33);
-    /* Naranja oscuro */
-}
-
-/* Estilos para los campos de formulario */
-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-form input[type="datetime"],
-form input[type="text"],
-form select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 15px;
-}
-
-form input[type="submit"] {
-    width: 25%;
-    padding: 15px;
-    border: none;
-    background-color: rgb(206, 70, 70);
-    /* Naranja */
-    color: white;
-    font-size: 17px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block;
-    margin: 0 auto;
-    
-}
-
-form input[type="submit"]:hover {
-    background-color: rgb(153, 33, 33);
-    /* Naranja oscuro */
-}
-
-button{
-    width: 25%;
-        padding: 15px;
-        border: none;
-        background-color: rgb(206, 70, 70);
-        /* Naranja */
-        color: white;
-        font-size: 17px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        display: block;
-        margin: 0 auto;
-}
-
-button:hover{
-    background-color: rgb(153, 33, 33);
-}
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    background-color: #131212;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--fifth-color-opaco);
     color: #fff;
-    padding: 20px 0;
-    text-align: center;
-
 }
 
-.logo img {
-    margin: 10px;
-    width: 150px;
-    /* Ajusta el tamaño del logo según sea necesario */
+header.scrolled {
+    background-color: var(--fifth-color);
+}
+
+header .logo img {
+    max-height: 100px;
+    margin-left: 1em;
 }
 
 .header-title h1 {
-    margin-left: 15em;
-    margin-top: 20px;
+    margin: 0;
+    font-size: 24px;
 }
 
-/* Estilos para el menú de reportes */
-aside {
-    background-color: #f2f2f2;
-    padding: 20px;
-    width: 250px;
-    float: left;
-    margin-right: 20px;
+h2 {
+    color: var(--primary-color);
+    font-size: 1em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1;
 }
+
+main {
+    margin: 2em auto;
+    max-width: 50%;
+    margin-top: 10em;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
 
 .list {
-    margin-bottom: 20px;
-}
-
-.list h2 {
-    margin-bottom: 10px;
-}
-
-.list a {
-    display: block;
-    margin-bottom: 5px;
-    text-decoration: none;
-    color: white;
-    background-color: rgb(206, 70, 70);
-    /* Naranja */
-    padding: 10px;
-}
-
-.list a:hover {
-    background-color: rgb(153, 33, 33);
-    /* Naranja oscuro */
-}
-
-h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2em;
-    font-size: 40px;
-}
-
-/* Estilos para el formulario */
-section {
-    float: left;
-    width: calc(100% - 290px); /* 250px del menú de reportes + 20px de margen derecho */
     padding: 20px;
+    border-radius: 10px;
 }
 
-/* Estilos para la tabla */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
+.title_list h2 {
+    margin-top: 0;
 }
 
-table,
-th,
-td {
-    border: 1px solid #ccc;
-}
-
-th,
-td {
+.links a {
+    margin: .2em;
+    color: #e74c3c;
+    text-decoration: none;
     padding: 10px;
-    text-align: left;
+    transition: background-color 0.3s;
 }
 
-/* Estilos para las celdas de encabezado */
-th {
-    background-color: #333;
+.links a:hover {
+    padding: 2.7em .5em;
+    background-color: #e74c3c;
     color: #fff;
 }
 
-/* Estilos alternados para filas */
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+
+.form-title {
+    color: var(--primary-color);
+    font-size: 1em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 1.5em auto;
 }
 
-.table-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.containerAForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*max-width: 50%;*/
 }
 
-.table-button button {
-    padding: 5px 50px;
-    margin: 5px 0;
-    border: none;
-    cursor: pointer;
-    background-color: rgb(206, 70, 70);
-    /* Naranja */
-    color: white;
-    transition: background-color 0.3s ease;
-    /* max-width: 100%;*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.containerForm .container {
+    margin-bottom: 15px;
 }
 
-.table-button button:hover {
-    background-color: rgb(153, 33, 33);
-    /* Naranja oscuro */
-}
-
-.title-table{
-    background-color: rgb(153, 33, 33);
-    color: white;
-}
-/* Estilos para dispositivos móviles */
-@media screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .header-title h1 {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
-    aside {
-        width: 100%;
-        margin-right: 0;
-    }
-
-    section {
-        width: 100%;
-        margin-top: 20px;
-        /* Añade espacio entre el formulario y el menú en dispositivos móviles */
-    }
-
-    form input[type="submit"] {
-        width: 100%;
-    }
-}
-
-#titleReport{
-    display: inline-flex;
-    justify-content: center;
-    margin : 10px 100px;
-    padding: 1em;
-    font-size: 20px;
-    border-bottom: 2px solid rgba(26, 22, 22, 0.39);
-
-}
-
-.reportPrint{
-    display: inline-flex;
-    flex-direction: column;
-}
-
-.containerReportDate{
-    display: inline-flex;
-    padding: .3em;
-    border: 1px solid black;
-    margin: 0;
-    margin-bottom: 1.5em;
-}
-
-.containerReportDate p{
-    margin: 0 1.5em;
-}
-
-
-.containerReportPersons{
-    display: inline-flex;
-    flex-direction: column;
-    padding: 1em ;
-    border: 1px solid black;
-    margin-bottom: 2em;
-}
-
-.containerReportMachine{
-    display: inline-flex;
-    padding: .5em;
-    border: 1px solid black;
-    margin-bottom: 1.5em;
-}
-
-.containerReportMachine p{
-    margin: 0 1.5em;
-}
-
-.printReport {
-    display: inline-flex;
-    flex-direction: column;
-    padding: .2em;
-    border: 1px solid black;
+.containerForm label {
+    display: block;
     margin-bottom: 5px;
+    color: #333;
 }
 
-.timbre {
-    font-size: 10px;
-    margin: 0;
-    padding: 0;
-
+.containerForm input[type="text"],
+.containerForm input[type="datetime-local"],
+.containerForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
-.MessageDelete{
-    display: flex;
-    flex-direction: column;
-    margin:2em;
+.containerForm input[type="submit"] {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.MessageDelete button{
-    display: flex;
-    margin: 1em;
+.containerForm input[type="submit"]:hover {
+    background-color: #c0392b;
 }
